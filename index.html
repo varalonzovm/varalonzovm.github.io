@@ -1,0 +1,520 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080e1b">
+<meta name="description" content="Portafolio de Manuel Alonzo Vargas Vicencio. Desarrollo de sistemas, bases de datos, Business Intelligence y proyectos de ingeniería informática.">
+<title>Manuel Vargas | Portafolio Profesional</title>
+<style>
+:root {
+  --bg:#080e1b;--panel:#111c30;--panel2:#16233a;
+  --line:#293a53;--text:#edf4ff;--muted:#a0b2cc;
+  --cyan:#4bdcf2;--blue:#778bff;--green:#5ee2b4
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.container{max-width:1180px;margin:auto;padding:0 24px}
+header{position:sticky;top:0;z-index:20;background:#080e1bf2;backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:20px}
+.logo{font-size:24px;font-weight:900;letter-spacing:-1px;color:var(--cyan)}
+.logo span{color:white}
+nav{display:flex;gap:25px;align-items:center}
+nav a{font-size:14px;color:var(--muted)}
+nav a:hover{color:var(--cyan)}
+.menu{display:none;background:none;border:0;color:white;font-size:25px}
+.hero{position:relative;overflow:hidden;padding:120px 0 110px;background:radial-gradient(ellipse at 80% 20%,#1d346a88,transparent 55%),radial-gradient(ellipse at 15% 80%,#09677b33,transparent 55%)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #36738a;background:#12304488;border-radius:30px;color:var(--cyan);padding:7px 15px;font-size:13px;font-weight:650}
+.dot{height:7px;width:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.08;letter-spacing:-2.5px;margin:23px 0}
+.gradient{background:linear-gradient(100deg,var(--cyan),var(--blue));background-clip:text;-webkit-background-clip:text;color:transparent}
+.hero h2{font-size:19px;font-weight:500;color:#c6d5e9;line-height:1.5}
+.hero p,.lead{color:var(--muted);max-width:650px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{border-radius:11px;padding:12px 21px;border:1px solid var(--line);background:#1b2940;color:white;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn.primary{background:linear-gradient(115deg,var(--cyan),#8b91ff);color:#08111f;border:0}
+.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.terminal{border:1px solid #375071;border-radius:17px;background:#0d1627;box-shadow:0 25px 75px #0008;overflow:hidden}
+.terminal-top{background:#17243a;border-bottom:1px solid #2a3d56;padding:13px 18px;display:flex;gap:7px}
+.terminal-top i{width:10px;height:10px;border-radius:50%;background:#f47b78}
+.terminal-top i:nth-child(2){background:#f3c66d}
+.terminal-top i:nth-child(3){background:#5ed9a3}
+.terminal pre{padding:25px;overflow:auto;color:#a8d7ef;font-size:13px;line-height:2}
+.terminal .key{color:#8a9cff}.terminal .val{color:#76e6ba}
+section{padding:90px 0}
+section.alt{background:#0d1627}
+.section-label{color:var(--cyan);text-transform:uppercase;font-size:12px;letter-spacing:2px;font-weight:800}
+.section-title{font-size:clamp(29px,4vw,41px);line-height:1.2;letter-spacing:-1px;margin:10px 0 15px}
+.lead{margin-bottom:35px}
+.about-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:30px}
+.about-grid p{color:var(--muted)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px}
+.panel h3{margin-top:0}
+.fact{padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.fact:last-child{border-bottom:0}
+.fact strong{display:block;color:var(--cyan);font-size:12px}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.skill h3{font-size:18px;margin:0 0 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:12px;padding:6px 10px;border:1px solid #354760;border-radius:7px;color:#d4e2f4;background:#17253a}
+.filters{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px}
+.filter{border:1px solid var(--line);background:#132039;color:var(--muted);padding:9px 15px;border-radius:9px}
+.filter.active{background:var(--cyan);color:#06101c;border-color:var(--cyan);font-weight:750}
+.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.project{display:flex;flex-direction:column;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-radius:17px;transition:.2s}
+.project:hover{transform:translateY(-5px);border-color:#4bdcf280}
+.visual{height:185px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(circle at 70% 20%,#27598a99,transparent 55%),linear-gradient(135deg,#132843,#101a2e)}
+.visual::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff09 1px,transparent 1px),linear-gradient(90deg,#ffffff09 1px,transparent 1px);background-size:26px 26px}
+.visual svg{width:85%;height:80%;position:relative;filter:drop-shadow(0 10px 15px #0005)}
+.project-body{padding:22px;display:flex;flex-direction:column;flex:1}
+.category{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--cyan)}
+.project h3{font-size:19px;line-height:1.35;margin:10px 0}
+.project p{color:var(--muted);font-size:14px;flex:1}
+.project .chips{margin:10px 0 20px}
+.details{background:none;border:0;color:var(--cyan);font-weight:750;text-align:left;padding:5px 0}
+.details:hover{text-decoration:underline}
+.note{font-size:12px;color:var(--muted);margin-top:22px}
+.contact{text-align:center;max-width:760px;margin:auto}
+.contact .lead{margin-left:auto;margin-right:auto}
+.email{font-size:clamp(18px,3vw,28px);font-weight:800;color:var(--cyan);overflow-wrap:anywhere}
+footer{border-top:1px solid var(--line);padding:25px;text-align:center;color:var(--muted);font-size:13px}
+.modal{position:fixed;inset:0;background:#030813df;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal[hidden]{display:none}
+.modal-card{position:relative;background:#111d30;border:1px solid #37506a;border-radius:18px;width:min(700px,100%);max-height:88vh;overflow:auto;padding:34px}
+.modal-card h2{line-height:1.25;margin:10px 0 20px}
+.modal-card h3{font-size:15px;color:var(--cyan);margin-top:25px}
+.modal-card p,.modal-card li{color:var(--muted)}
+.modal-card ul{padding-left:21px}
+.modal-close{position:absolute;right:16px;top:10px;border:0;background:none;color:white;font-size:30px}
+.modal-card .visual{border-radius:12px;margin-bottom:22px}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+@media(max-width:900px){
+.hero-grid,.about-grid{grid-template-columns:1fr}
+.projects,.skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+.hero{padding:80px 0}
+}
+@media(max-width:600px){
+.container{padding:0 17px}
+.menu{display:block}
+nav{display:none;position:absolute;top:72px;left:0;right:0;background:#101b2e;flex-direction:column;align-items:stretch;padding:15px 24px;border-bottom:1px solid var(--line)}
+nav.open{display:flex}
+nav a{padding:9px}
+.projects,.skills{grid-template-columns:1fr}
+section{padding:65px 0}
+.terminal pre{font-size:11px}
+.modal-card{padding:23px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+<div class="container nav">
+<a href="#inicio" class="logo">MV<span>.</span></a>
+<button id="menuButton" class="menu" aria-label="Abrir menú" aria-expanded="false">☰</button>
+<nav id="nav">
+<a href="#inicio">Inicio</a>
+<a href="#sobre-mi">Sobre mí</a>
+<a href="#habilidades">Habilidades</a>
+<a href="#proyectos">Proyectos</a>
+<a href="#contacto">Contacto</a>
+</nav>
+</div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+<div class="container hero-grid">
+<div>
+<div class="eyebrow"><span class="dot"></span> Portafolio académico y profesional</div>
+<h1>Manuel Alonzo<br><span class="gradient">Vargas Vicencio</span></h1>
+<h2>Ingeniería de Ejecución en Informática<br>Mención Desarrollo de Sistemas</h2>
+<p>Estudiante en etapa final de formación en AIEP. Me interesa transformar problemas en soluciones tecnológicas mediante programación, bases de datos, análisis de información y desarrollo de software.</p>
+<div class="actions">
+<a class="btn primary" href="#proyectos">Explorar proyectos ↗</a>
+<a class="btn" href="#contacto">Contactarme →</a>
+</div>
+</div>
+<div class="terminal">
+<div class="terminal-top"><i></i><i></i><i></i></div>
+<pre>{
+  <span class="key">"nombre"</span>: <span class="val">"Manuel Vargas"</span>,
+  <span class="key">"especialidad"</span>: "Desarrollo de Sistemas",
+  <span class="key">"conocimientos"</span>: [
+    "Python", "Java", "SQL",
+    "HTML", "CSS", "Power BI"
+  ],
+  <span class="key">"intereses"</span>: [
+    "Software", "Datos",
+    "Ingeniería informática"
+  ],
+  <span class="key">"objetivo"</span>: <span class="val">"Práctica profesional"</span>
+}</pre>
+</div>
+</div>
+</section>
+
+<section id="sobre-mi">
+<div class="container">
+<div class="section-label">Perfil</div>
+<h2 class="section-title">Sobre mí</h2>
+<div class="about-grid">
+<div>
+<p>Soy estudiante de Ingeniería de Ejecución en Informática, mención Desarrollo de Sistemas, en AIEP. Comencé mis estudios en 2022 y actualmente me encuentro en la etapa final de mi formación académica.</p>
+<p>He desarrollado proyectos de análisis de datos, administración de bases de datos, diseño de sistemas, desarrollo web y videojuegos. Busco una oportunidad de práctica profesional donde pueda seguir aprendiendo, trabajar en equipo y aplicar mis conocimientos en situaciones reales.</p>
+<p>Mi formación incluye programación, análisis de sistemas, redes, testing, inteligencia artificial y soporte técnico, con especial interés en el desarrollo y la gestión de soluciones informáticas.</p>
+</div>
+<div class="panel">
+<h3>Información profesional</h3>
+<div class="fact"><strong>INSTITUCIÓN</strong>AIEP · de la Universidad Andrés Bello</div>
+<div class="fact"><strong>FORMACIÓN</strong>Ingeniería de Ejecución en Informática</div>
+<div class="fact"><strong>MENCIÓN</strong>Desarrollo de Sistemas</div>
+<div class="fact"><strong>INICIO DE ESTUDIOS</strong>2022</div>
+<div class="fact"><strong>OBJETIVO</strong>Práctica profesional</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="habilidades" class="alt">
+<div class="container">
+<div class="section-label">Tecnologías</div>
+<h2 class="section-title">Conocimientos y herramientas</h2>
+<p class="lead">Tecnologías utilizadas durante mi formación y en proyectos académicos y personales.</p>
+<div class="skills">
+<div class="panel skill"><h3>⌨ Programación</h3><div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">SQL</span></div></div>
+<div class="panel skill"><h3>▤ Herramientas</h3><div class="chips"><span class="chip">SQL Server</span><span class="chip">SSMS</span><span class="chip">Power BI</span><span class="chip">Excel</span><span class="chip">Visual Studio</span><span class="chip">Unity</span></div></div>
+<div class="panel skill"><h3>◈ Áreas de formación</h3><div class="chips"><span class="chip">Bases de datos</span><span class="chip">Desarrollo web</span><span class="chip">Análisis de sistemas</span><span class="chip">Testing</span><span class="chip">Redes</span><span class="chip">Soporte TI</span><span class="chip">Business Intelligence</span></div></div>
+</div>
+</div>
+</section>
+
+<section id="proyectos">
+<div class="container">
+<div class="section-label">Experiencia práctica</div>
+<h2 class="section-title">Proyectos seleccionados</h2>
+<p class="lead">Una selección de trabajos académicos y proyectos personales. Haz clic en cada proyecto para conocer su objetivo, tecnologías y resultados.</p>
+<div class="filters" id="filters">
+<button class="filter active" data-filter="Todos">Todos</button>
+<button class="filter" data-filter="Datos">Datos y BI</button>
+<button class="filter" data-filter="Software">Desarrollo</button>
+<button class="filter" data-filter="Ingeniería">Ingeniería</button>
+</div>
+<div class="projects" id="projectGrid"></div>
+<p class="note">Las ilustraciones son representaciones visuales de cada área, no capturas de los sistemas originales. Los proyectos académicos se presentan con fines de demostración de competencias.</p>
+</div>
+</section>
+
+
+<section id="contacto" class="alt">
+  <style>
+    #contacto .contact {
+      text-align: center;
+      max-width: 760px;
+      margin: auto;
+    }
+
+    #contacto .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin: 30px 0;
+    }
+
+    #contacto .contact-email {
+      font-size: clamp(18px, 3vw, 28px);
+      font-weight: 800;
+      color: #4bdcf2;
+      overflow-wrap: anywhere;
+      margin: 0;
+    }
+
+    #contacto .contact-phone {
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 700;
+      color: #edf4ff;
+      margin: 0;
+    }
+
+    #contacto .contact-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    #contacto .copy-status {
+      color: #5ee2b4;
+      font-size: 14px;
+      min-height: 24px;
+      margin-top: 16px;
+    }
+  </style>
+
+  <div class="container contact">
+
+    <div class="section-label">HABLEMOS</div>
+
+    <h2 class="section-title">
+      Contacto profesional
+    </h2>
+
+    <p class="lead">
+      Estoy interesado en oportunidades de práctica profesional
+      relacionadas con desarrollo de sistemas, bases de datos,
+      análisis de información y otras áreas de la ingeniería
+      informática.
+    </p>
+
+    <div class="contact-info">
+      <p class="contact-email">
+        var.alonzovm@gmail.com
+      </p>
+
+      <p class="contact-phone">
+        +56 9 3559 7798
+      </p>
+    </div>
+
+    <div class="contact-actions">
+
+      <button class="btn primary" id="copyEmail">
+        Copiar correo
+      </button>
+
+      <button class="btn" id="copyPhone">
+        Copiar número
+      </button>
+
+    </div>
+
+    <p class="copy-status" id="copyStatus"
+       aria-live="polite"></p>
+
+  </div>
+</section>
+</main>
+
+<footer>© <span id="year"></span> Manuel Alonzo Vargas Vicencio · Portafolio profesional</footer>
+
+<div id="modal" class="modal" hidden>
+<div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<button class="modal-close" id="closeModal" aria-label="Cerrar proyecto">×</button>
+<div id="modalContent"></div>
+</div>
+</div>
+
+<script>
+"use strict";
+const illustrations = {
+  Datos:`<svg viewBox="0 0 320 180" aria-hidden="true">
+  <rect x="20" y="16" width="280" height="148" rx="12" fill="#101b31" stroke="#4c6b91"/>
+  <rect x="35" y="30" width="250" height="18" rx="4" fill="#243955"/>
+  <rect x="36" y="65" width="72" height="35" rx="6" fill="#203958"/>
+  <rect x="123" y="65" width="72" height="35" rx="6" fill="#203958"/>
+  <rect x="210" y="65" width="72" height="35" rx="6" fill="#203958"/>
+  <g fill="#4bdcf2"><rect x="45" y="130" width="19" height="22" rx="3"/><rect x="77" y="116" width="19" height="36" rx="3"/><rect x="109" y="123" width="19" height="29" rx="3"/><rect x="141" y="105" width="19" height="47" rx="3"/><rect x="173" y="113" width="19" height="39" rx="3"/></g>
+  <polyline points="211,140 227,128 244,135 260,108 278,114" fill="none" stroke="#8b91ff" stroke-width="4" stroke-linecap="round"/>
+  </svg>`,
+  Software:`<svg viewBox="0 0 320 180" aria-hidden="true">
+  <rect x="24" y="17" width="272" height="146" rx="12" fill="#101b31" stroke="#4c6b91"/>
+  <rect x="24" y="17" width="272" height="23" rx="10" fill="#243955"/>
+  <circle cx="39" cy="29" r="4" fill="#f47b78"/><circle cx="52" cy="29" r="4" fill="#f3c66d"/><circle cx="65" cy="29" r="4" fill="#5ed9a3"/>
+  <g fill="none" stroke="#4bdcf2" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M112 78L82 103l30 25"/><path d="M208 78l30 25-30 25"/></g>
+  <path d="M177 70l-34 69" stroke="#8b91ff" stroke-width="7" stroke-linecap="round"/>
+  </svg>`,
+  Ingeniería:`<svg viewBox="0 0 320 180" aria-hidden="true">
+  <rect x="25" y="15" width="270" height="150" rx="12" fill="#101b31" stroke="#4c6b91"/>
+  <g fill="#213f60" stroke="#4bdcf2" stroke-width="2"><rect x="40" y="32" width="90" height="38" rx="7"/><rect x="189" y="32" width="90" height="38" rx="7"/><rect x="114" y="108" width="90" height="38" rx="7"/></g>
+  <g fill="none" stroke="#8b91ff" stroke-width="3"><path d="M85 70v18h74v20"/><path d="M234 70v18h-75"/></g>
+  <g fill="#4bdcf2"><circle cx="159" cy="88" r="5"/><circle cx="85" cy="51" r="5"/><circle cx="234" cy="51" r="5"/><circle cx="159" cy="127" r="5"/></g>
+  </svg>`
+};
+
+const projects=[
+{
+ title:"Proyección de demanda e ingresos",
+ category:"Datos",type:"Business Intelligence · Proyecto académico",
+ stack:["Power BI","DAX","Excel"],
+ summary:"Análisis histórico de ventas y proyecciones por producto, período y zona geográfica.",
+ description:"Construcción de un reporte de Business Intelligence para analizar registros históricos de ventas y generar estimaciones de demanda e ingresos. El trabajo incluye visualizaciones, medidas DAX, análisis mensual y validación del modelo.",
+ points:["Indicadores de unidades, ventas y pedidos","Análisis de evolución mensual e histórica","Pronósticos por producto y zona","Validación y análisis del error de las estimaciones"],
+ result:"Reporte orientado a apoyar decisiones de planificación comercial. Las proyecciones representan estimaciones, no ventas reales."
+},
+{
+ title:"Administración y seguridad de bases de datos",
+ category:"Datos",type:"SQL Server · Proyecto académico",
+ stack:["SQL Server","SSMS","T-SQL"],
+ summary:"Gestión de usuarios, registros de acceso, respaldo y documentación de incidentes.",
+ description:"Trabajo práctico desarrollado en SQL Server Management Studio, enfocado en la administración y protección de información, utilizando una base de datos de incidentes y un caso de estudio de seguridad.",
+ points:["Creación de tablas y registros","Gestión de usuarios y accesos","Configuración y verificación de respaldos","Análisis y documentación de incidentes de seguridad"],
+ result:"Evidencias de administración de bases de datos, respaldos y procedimientos de respuesta ante incidentes."
+},
+{
+ title:"Modelo relacional de gestión de ventas",
+ category:"Datos",type:"Diseño de bases de datos",
+ stack:["SQL","Modelo relacional","SQL Server"],
+ summary:"Estructura de datos para clientes, productos, usuarios y operaciones comerciales.",
+ description:"Diseño de un esquema relacional para organizar información de un sistema de ventas, estableciendo relaciones entre las entidades principales y restricciones para conservar la integridad de los datos.",
+ points:["Modelado de entidades y relaciones","Tablas de usuarios, clientes y productos","Registro de ventas y detalles de venta","Claves primarias, foráneas y restricciones"],
+ result:"Modelo estructurado que permite organizar y relacionar correctamente la información comercial."
+},
+{
+ title:"Awful Day · Videojuego 2D",
+ category:"Software",type:"Desarrollo de videojuegos · Proyecto académico",
+ stack:["Unity","Videojuegos 2D","Diseño de juego"],
+ summary:"Proyecto de videojuego 2D con documentación de desarrollo y planificación de publicación.",
+ description:"Trabajo de desarrollo de un videojuego 2D mediante Unity, acompañado de documentación sobre su distribución, promoción, costos y mantenimiento.",
+ points:["Desarrollo y diseño de videojuego 2D","Uso del entorno Unity","Análisis de distribución y publicación","Planificación de costos y mantenimiento"],
+ result:"Experiencia académica en desarrollo de videojuegos y planificación de un producto digital."
+},
+{
+ title:"Minería de datos con Python",
+ category:"Datos",type:"Análisis estadístico · Proyecto académico",
+ stack:["Python","Matplotlib","Visualización"],
+ summary:"Exploración de datos de propiedades y precios mediante gráficos estadísticos.",
+ description:"Análisis exploratorio de un conjunto de datos de propiedades, con revisión de la calidad de los registros y generación de visualizaciones utilizando Python y Matplotlib.",
+ points:["Revisión exploratoria del conjunto de datos","Generación de histogramas","Construcción de gráficos circulares","Interpretación de distribuciones y resultados"],
+ result:"Visualizaciones que permiten comprender el comportamiento de variables del conjunto de datos."
+},
+{
+ title:"Desarrollo de sitios web",
+ category:"Software",type:"Desarrollo web · Proyectos personales",
+ stack:["HTML","CSS","Desarrollo web"],
+ summary:"Proyectos web para ventas agrícolas, publicidad automotriz y apoyo a comercio físico.",
+ description:"Experiencia desarrollando páginas web para proyectos personales y necesidades comerciales, incluyendo presentación de productos, información y contacto.",
+ points:["Sitio de productos agrícolas","Página de contacto para publicidad automotriz","Apoyo digital para tienda física","Diseño de estructuras y presentación web"],
+ result:"Proyectos desarrollados para practicar y aplicar conocimientos de desarrollo web. No se encuentran publicados actualmente."
+},
+{
+ title:"Arquitectura de sistema de inventario",
+ category:"Ingeniería",type:"Diseño de sistemas · Caso académico",
+ stack:["Arquitectura","Diagramas UML","Diseño de interfaz"],
+ summary:"Modelamiento de interfaces, módulos y despliegue para un sistema de inventario.",
+ description:"Caso de estudio de ingeniería de software que aborda el diseño de interfaces, componentes y despliegue de un sistema de gestión de inventario.",
+ points:["Identificación de necesidades por rol","Diseño de interfaz de usuario","Modelamiento de componentes","Diseño de arquitectura y despliegue"],
+ result:"Documentación de diseño técnico y estructura de un sistema propuesto. Se presenta como referencia académica, no como implementación."
+},
+{
+ title:"Planificación de aplicación de bienestar",
+ category:"Ingeniería",type:"Gestión de proyectos · Trabajo colaborativo",
+ stack:["Gestión de proyectos","Planificación","Seguridad"],
+ summary:"Plan de proyecto para una aplicación móvil de seguimiento de salud y bienestar.",
+ description:"Propuesta académica para gestionar el desarrollo de una aplicación de bienestar, considerando requerimientos, recursos, actividades, riesgos, seguridad y seguimiento.",
+ points:["Definición de alcance y requerimientos","Planificación de actividades y recursos","Presupuesto y control de avance","Consideraciones de privacidad y pruebas"],
+ result:"Plan de gestión documentado. Corresponde a una propuesta de proyecto, no a una aplicación móvil implementada."
+}
+];
+
+const grid=document.getElementById("projectGrid");
+const modal=document.getElementById("modal");
+const content=document.getElementById("modalContent");
+let previousFocus=null;
+function tags(items){
+ const wrap=document.createElement("div");wrap.className="chips";
+ items.forEach(item=>{const s=document.createElement("span");s.className="chip";s.textContent=item;wrap.append(s)});
+ return wrap;
+}
+function visual(category){
+ const el=document.createElement("div");el.className="visual";
+ el.innerHTML=illustrations[category];return el;
+}
+function render(filter="Todos"){
+ grid.replaceChildren();
+ projects.forEach((p,i)=>{
+ if(filter!=="Todos"&&p.category!==filter)return;
+ const card=document.createElement("article");card.className="project";
+ card.append(visual(p.category));
+ const body=document.createElement("div");body.className="project-body";
+ const type=document.createElement("span");type.className="category";type.textContent=p.type;
+ const title=document.createElement("h3");title.textContent=p.title;
+ const desc=document.createElement("p");desc.textContent=p.summary;
+ const button=document.createElement("button");button.className="details";button.textContent="Explorar proyecto →";
+ button.setAttribute("aria-label","Ver detalles de "+p.title);
+ button.addEventListener("click",()=>openProject(i));
+ body.append(type,title,desc,tags(p.stack),button);
+ card.append(body);grid.append(card);
+ });
+}
+function openProject(i){
+ const p=projects[i];previousFocus=document.activeElement;
+ content.replaceChildren();
+ content.append(visual(p.category));
+ const type=document.createElement("div");type.className="category";type.textContent=p.type;
+ const title=document.createElement("h2");title.id="modalTitle";title.textContent=p.title;
+ const desc=document.createElement("p");desc.textContent=p.description;
+ const tech=document.createElement("h3");tech.textContent="Tecnologías y herramientas";
+ const features=document.createElement("h3");features.textContent="Trabajo realizado";
+ const ul=document.createElement("ul");
+ p.points.forEach(t=>{const li=document.createElement("li");li.textContent=t;ul.append(li)});
+ const results=document.createElement("h3");results.textContent="Resultado";
+ const result=document.createElement("p");result.textContent=p.result;
+ content.append(type,title,desc,tech,tags(p.stack),features,ul,results,result);
+ modal.hidden=false;document.body.style.overflow="hidden";
+ document.getElementById("closeModal").focus();
+}
+function closeProject(){
+ modal.hidden=true;document.body.style.overflow="";
+ if(previousFocus)previousFocus.focus();
+}
+document.getElementById("closeModal").addEventListener("click",closeProject);
+modal.addEventListener("click",e=>{if(e.target===modal)closeProject()});
+document.addEventListener("keydown",e=>{
+ if(modal.hidden)return;
+ if(e.key==="Escape")closeProject();
+ if(e.key==="Tab"){
+ const buttons=modal.querySelectorAll("button");
+ if(buttons.length===1){e.preventDefault();buttons[0].focus()}
+ }
+});
+document.querySelectorAll(".filter").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+ document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");render(btn.dataset.filter);
+ });
+});
+const menu=document.getElementById("nav");
+const menuButton=document.getElementById("menuButton");
+menuButton.addEventListener("click",()=>{
+ const open=menu.classList.toggle("open");
+ menuButton.setAttribute("aria-expanded",String(open));
+});
+menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+ menu.classList.remove("open");menuButton.setAttribute("aria-expanded","false");
+}));
+
+async function copiarContacto(texto, mensaje) {
+  try {
+    await navigator.clipboard.writeText(texto);
+    document.getElementById("copyStatus").textContent = mensaje;
+  } catch (error) {
+    document.getElementById("copyStatus").textContent =
+      "No se pudo copiar automáticamente.";
+  }
+}
+
+document.getElementById("copyEmail").addEventListener("click", () => {
+  copiarContacto(
+    "var.alonzovm@gmail.com",
+    "Correo copiado correctamente ✓"
+  );
+});
+
+document.getElementById("copyPhone").addEventListener("click", () => {
+  copiarContacto(
+    "+56935597798",
+    "Número copiado correctamente ✓"
+  );
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+render();
+</script>
+</body>
+</html>
